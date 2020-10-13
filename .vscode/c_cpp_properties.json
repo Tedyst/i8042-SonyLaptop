@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/lib/modules/5.9.0-arch1-1/build/include/**",
+                "/lib/modules/5.9.0-arch1-1/build/arch/x86/include/**",
+                "/usr/include/**",
+                "/usr/local/include/**",
+                "/usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/include"
+            ],
+            "defines": [
+                "__KERNEL__",
+                "MODULE"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "compilerArgs": [
+                "-nostdinc",
+                "-include",
+                "/usr/src/linux-headers-5.4.0-39-generic/include/linux/kconfig.h",
+                "-include",
+                "/usr/src/linux-headers-5.4.0-39-generic/include/linux/compiler_types.h"
+            ],
+            "cStandard": "gnu99",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64"
+        }
+    ],
+    "version": 4
+}
