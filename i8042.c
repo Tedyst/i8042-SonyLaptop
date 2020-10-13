@@ -1115,6 +1115,9 @@ static void i8042_controller_reset(bool s2r_wants_reset)
 
     if (i8042_command(&i8042_initial_ctr, I8042_CMD_CTL_WCTR))
         pr_warn("Can't restore CTR\n");
+
+    pr_warn("Attempting to reset device connected to KBD port\n");
+    i8042_kbd_write(NULL, (unsigned char) 0xff);
 }
 
 
