@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="i8042 – module sources for Sony Laptop"
 arch=(any)
 license=(GPL2)
-depends=(dkms)
+depends=(dkms linux-headers)
 makedepends=()
 sha256sums=()
 
