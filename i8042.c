@@ -1079,6 +1079,7 @@ static int i8042_controller_init(void)
 
 static void i8042_controller_reset(bool s2r_wants_reset)
 {
+    dbg("i8042_controller_reset %s\n", s2r_wants_reset ? "true" : "false");
     i8042_flush();
 
     /*
@@ -1234,8 +1235,10 @@ static int i8042_pm_suspend(struct device *dev)
     dbg("i8042_pm_suspend\n");
     int i;
 
-    if (pm_suspend_via_firmware())
-        i8042_controller_reset(true);
+    // if (pm_suspend_via_firmware())
+    //     i8042_controller_reset(true);
+
+    i8042_controller_reset(false);
 
     /* Set up serio interrupts for system wakeup. */
     for (i = 0; i < I8042_NUM_PORTS; i++) {
