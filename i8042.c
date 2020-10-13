@@ -444,10 +444,10 @@ static int i8042_start(struct serio *serio)
      * behavior on many platforms using suspend-to-RAM (ACPI S3)
      * by default.
      */
-    if (pm_suspend_default_s2idle() &&
-            serio == i8042_ports[I8042_KBD_PORT_NO].serio) {
-        device_set_wakeup_enable(&serio->dev, true);
-    }
+    // if (pm_suspend_default_s2idle() &&
+    //         serio == i8042_ports[I8042_KBD_PORT_NO].serio) {
+    //     device_set_wakeup_enable(&serio->dev, true);
+    // }
 
     spin_lock_irq(&i8042_lock);
     port->exists = true;
