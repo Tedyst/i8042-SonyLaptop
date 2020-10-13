@@ -1080,6 +1080,7 @@ static int i8042_controller_init(void)
 static void i8042_controller_reset(bool s2r_wants_reset)
 {
     dbg("i8042_controller_reset %s\n", s2r_wants_reset ? "true" : "false");
+    udelay(100);
     i8042_flush();
 
     /*
@@ -1233,6 +1234,7 @@ static int i8042_controller_resume(bool s2r_wants_reset)
 static int i8042_pm_suspend(struct device *dev)
 {
     dbg("i8042_pm_suspend\n");
+    udelay(100);
     int i;
 
     // if (pm_suspend_via_firmware())
@@ -1262,6 +1264,7 @@ static int i8042_pm_resume_noirq(struct device *dev)
 static int i8042_pm_resume(struct device *dev)
 {
     dbg("i8042_pm_resume\n");
+    udelay(100);
     bool want_reset;
     int i;
 
