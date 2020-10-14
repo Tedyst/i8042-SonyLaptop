@@ -1,0 +1,12 @@
+[Unit]
+Description=Fix Stupid Annoying Startup Bug
+After=suspend.target
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=bash -c "echo -n rescan > /sys/devices/platform/i8042/serio0/drvctl"
+TimeoutSec=0
+
+[Install]
+WantedBy=suspend.target
