@@ -593,10 +593,10 @@ static irqreturn_t i8042_interrupt(int irq, void *dev_id)
     port = &i8042_ports[port_no];
     serio = port->exists ? port->serio : NULL;
 
-    filter_dbg(port->driver_bound, data, "<- i8042 (interrupt, %d, %d%s%s)\n",
-               port_no, irq,
-               dfl & SERIO_PARITY ? ", bad parity" : "",
-               dfl & SERIO_TIMEOUT ? ", timeout" : "");
+    // filter_dbg(port->driver_bound, data, "<- i8042 (interrupt, %d, %d%s%s)\n",
+    //            port_no, irq,
+    //            dfl & SERIO_PARITY ? ", bad parity" : "",
+    //            dfl & SERIO_TIMEOUT ? ", timeout" : "");
 
     filtered = i8042_filter(data, str, serio);
 
