@@ -273,8 +273,8 @@ static int i8042_flush(void)
         if (count++ < I8042_BUFFER_SIZE) {
             udelay(50);
             data = i8042_read_data();
-            dbg("%02x <- i8042 (flush, %s)\n",
-                data, str & I8042_STR_AUXDATA ? "aux" : "kbd");
+            // dbg("%02x <- i8042 (flush, %s)\n",
+            //     data, str & I8042_STR_AUXDATA ? "aux" : "kbd");
         } else {
             retval = -EIO;
             break;
@@ -305,16 +305,16 @@ static int __i8042_command(unsigned char *param, int command)
     if (error)
         return error;
 
-    dbg("%02x -> i8042 (command)\n", command & 0xff);
+    // dbg("%02x -> i8042 (command)\n", command & 0xff);
     i8042_write_command(command & 0xff);
 
     for (i = 0; i < ((command >> 12) & 0xf); i++) {
         error = i8042_wait_write();
         if (error) {
-            dbg("     -- i8042 (wait write timeout)\n");
+            // dbg("     -- i8042 (wait write timeout)\n");
             return error;
         }
-        dbg("%02x -> i8042 (parameter)\n", param[i]);
+        // dbg("%02x -> i8042 (parameter)\n", param[i]);
         i8042_write_data(param[i]);
     }
 
@@ -332,7 +332,7 @@ static int __i8042_command(unsigned char *param, int command)
         }
 
         param[i] = i8042_read_data();
-        dbg("%02x <- i8042 (return)\n", param[i]);
+        // dbg("%02x <- i8042 (return)\n", param[i]);
     }
 
     return 0;
@@ -363,7 +363,7 @@ static int i8042_kbd_write(struct serio *port, unsigned char c)
     spin_lock_irqsave(&i8042_lock, flags);
 
     if (!(retval = i8042_wait_write())) {
-        dbg("%02x -> i8042 (kbd-data)\n", c);
+        // dbg("%02x -> i8042 (kbd-data)\n", c);
         i8042_write_data(c);
     }
 
