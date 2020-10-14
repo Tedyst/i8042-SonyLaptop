@@ -1178,6 +1178,7 @@ static void i8042_dritek_enable(void)
 static int i8042_controller_resume(bool s2r_wants_reset)
 {
     dbg("i8042_controller_resume\n");
+    udelay(100);
     int error;
 
     error = i8042_controller_check();
@@ -1259,6 +1260,7 @@ static int i8042_pm_suspend(struct device *dev)
 static int i8042_pm_resume_noirq(struct device *dev)
 {
     dbg("i8042_pm_resume_noirq\n");
+    udelay(100);
     if (!pm_resume_via_firmware())
         i8042_interrupt(0, NULL);
 
@@ -1299,6 +1301,8 @@ static int i8042_pm_resume(struct device *dev)
 
 static int i8042_pm_thaw(struct device *dev)
 {
+    dbg("i8042_pm_thaw\n");
+    udelay(100);
     i8042_interrupt(0, NULL);
 
     return 0;
@@ -1306,6 +1310,8 @@ static int i8042_pm_thaw(struct device *dev)
 
 static int i8042_pm_reset(struct device *dev)
 {
+    dbg("i8042_pm_reset\n");
+    udelay(100);
     i8042_controller_reset(false);
 
     return 0;
@@ -1313,6 +1319,8 @@ static int i8042_pm_reset(struct device *dev)
 
 static int i8042_pm_restore(struct device *dev)
 {
+    dbg("i8042_pm_restore\n");
+    udelay(100);
     return i8042_controller_resume(false);
 }
 
