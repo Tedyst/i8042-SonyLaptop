@@ -1258,6 +1258,7 @@ static int i8042_pm_suspend(struct device *dev)
 
 static int i8042_pm_resume_noirq(struct device *dev)
 {
+    dbg("i8042_pm_resume_noirq\n");
     if (!pm_resume_via_firmware())
         i8042_interrupt(0, NULL);
 
