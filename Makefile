@@ -39,7 +39,7 @@ MODULE_OPTIONS = devices=2
 all: i8042.ko
 i8042: i8042.ko
 i8042.ko:
-	@echo "Building v4l2-loopback driver..."
+	@echo "Building i8042 driver..."
 	$(MAKE) -C $(KERNEL_DIR) M=$(PWD) modules
 
 install-all: install install-utils install-man
