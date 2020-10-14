@@ -13,5 +13,5 @@ sha256sums=()
 package() {
   cd ..
   install -Dm644 i8042.c i8042.h i8042-x86ia64io.h dkms.conf Makefile -t "${pkgdir}"/usr/src/i8042-${pkgver}/
-  install -Dm644 sony-fix.service /etc/systemd/system/
+  install -Dm644 sony-fix.service "${pkgdir}"/etc/systemd/system/
 }
